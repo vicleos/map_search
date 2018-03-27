@@ -116,49 +116,8 @@
 </head>
 <body>
 <div class="header clear">
-    <a mod-id="logo" class="mod-logo fl" href="//www.lianjia.com/" title="链家网"></a>
-    <div class="mod-switch_channel fl">
-        <p>二手房</p>
-        <ul>
-            <i style="width: 100%;position: absolute;height: 8px;top: -8px;left: 0;"></i>
-            <span></span>
-            <li><a href="/ditu/">二手房</a></li>
-            <li><a href="/dituzufang/">租房</a></li>
-            <li><a href="https://zz.fang.lianjia.com/ditu/">新房</a></li>
-        </ul>
-    </div>
-    <div class="loninContaner"><div class="overlay_bg"></div><div class="panel_login animated" id="dialog"><div class="panel_info"><i class="close_login">×</i><div class="panel_tab"><div class="title"><div class="fl">账号密码登录</div></div><div class="clear"></div><div id="con_login_user"><form action="" method="post"><ul><li class="item border-t userName"><input type="text" class="the_input topSpecial users" placeholder="请输入手机号" maxlength="11"></li><li class="item border-b pwd"><input type="password" class="the_input password" maxlength="20" placeholder="请输入登录密码"><em class="password-view"></em></li><li class="item checkVerimg" style="display:none;"><input type="text" class="the_input ver-img" maxlength="6" placeholder="请输入验证码"><img class="verImg"></li><li class="item drag" style="display:none;"><div id="drag"></div></li><li class="show-error"><dd>用户名或密码错误</dd></li><li class="li_01"><label class="checkbox-btn"><span class="active"><input type="checkbox" name="remember" value="1" class="mind-login" checked=""></span>7天内免登录</label><a href="javascript:;" rel="nofollow" class="toforget">忘记密码</a></li><li class="li_btn"><a class="login-user-btn">登录</a></li><li class="footer-link"><a href="javascript:;" rel="nofollow" class="totellogin">手机快捷登录</a></li></ul></form></div><div id="con_login_agent" class="undis"><form action="" method="post"><ul><li class="item"><dd></dd><input type="text" class="the_input users" placeholder="输入经纪人ID号码"></li><li class="item"><input type="password" class="the_input password" placeholder="登录密码"></li><li class="li_01"><label class="checkbox-btn"><span class="active"><input type="checkbox" name="remember" value="1" class="mind-login" checked=""></span>7天内免登录</label><a href="https://passport.lianjia.com/register/resources/lianjia/forget.html?service=http://bj.lianjia.com/" rel="nofollow">忘记密码</a></li><li><input class="login-agent-btn" value="立即登录"></li></ul></form></div></div></div><div class="registered"></div></div><div class="panel_login animated" id="dialog_tel"><div class="panel_info"><i class="close_login">×</i><div class="panel_tab"><div class="title"><div class="fl">手机快捷登录</div><div class="register_text_tel">别担心，无账号自动注册不会导致手机号被泄露</div></div><div class="clear"></div><div id="con_login_user_tel"><form action="" method="post"><ul><li class="item border-t userName"><input type="text" class="the_input topSpecial users_tel" maxlength="11" placeholder="请输入手机号"></li><!-- <li class="item pwd"><input type="password" class="the_input password_tel"  placeholder="请输入短信验证码"/></li> --><li class="item checkVerimg" style=""><input type="text" class="the_input ver-img" maxlength="6" placeholder="请输入验证码"><img class="verImg"></li><li class="item border-b Verify"><input type="text" class="the_input verifycode" maxlength="6" placeholder="请输入短信验证码"><a class="send_verify_code" id="send_verify_code_tel" href="javascript:;" rel="nofollow"><em>获取验证码</em></a></li><li class="send_verify_code_s" id="send_verify_code_tel_s" href="javascript:;" rel="nofollow"><em>没有收到验证码？</em><a class="voice_a">发送语音验证码</a></li><li class="show-error"><dd>用户名或密码错误</dd></li><li class="li_01"><label class="checkbox-btn"><span class="active"><input type="checkbox" name="remember" value="1" class="mind-login" checked=""></span>7天内免登录</label></li><li class="li_btn"><a class="login-user-tel-btn">登录</a></li><li class="footer-link"><a href="javascript:;" rel="nofollow" class="tologin">账号密码登录</a></li></ul></form></div></div></div><div class="registered"></div></div><div class="panel_login animated" id="dialog_reg"><div class="panel_info"><i class="close_login">×</i><div class="panel_tab"><div class="title"><div class="fl">手机号码注册</div><label class="fr register_text">已有账号？<a href="javascript:;" rel="nofollow" class="tologin">去登录</a></label></div><div class="clear"></div><div id="con_login_user_reg"><form action="" method="post"><ul><li class="item border-t userName"><input type="text" class="the_input topSpecial users_reg" maxlength="11" placeholder="请输入手机号"></li><li class="item checkVerimg" style=""><input type="text" class="the_input ver-img" maxlength="6" placeholder="请输入验证码"><img class="verImg"></li><li class="item border-c Verify"><input type="text" class="the_input verifycode" maxlength="6" placeholder="请输入短信验证码"><a class="send_verify_code" id="send_verify_code_reg" href="javascript:;" rel="nofollow"><em>获取验证码</em></a></li><li class="item border-b pwd"><input type="password" class="the_input password_reg" maxlength="20" placeholder="请输入密码（最少8位，数字+字母）"><em class="password-view"></em></li><li class="send_verify_code_s" id="send_verify_code_reg_s" href="javascript:;" rel="nofollow"><em>没有收到验证码？</em><a class="voice_a">发送语音验证码</a></li><li class="show-error"><dd>用户名或密码错误</dd></li><li class="li_01"><label class="checkbox-btn"><span class="active"><input type="checkbox" name="read" value="1" class="read-protocol" checked=""></span>我已阅读并同意</label><a class="toprotocol" href="//www.lianjia.com/zhuanti/protocol" target="_blank">《链家用户使用协议》</a></li><li class="li_btn"><a class="register-user-btn">注册</a></li></ul></form></div></div></div><div class="registered"></div></div><div class="panel_login animated" id="dialog_forget"><div class="panel_info"><i class="close_login">×</i><div class="panel_tab"><div class="title"><div class="fl">找回密码</div></div><div class="clear"></div><div id="con_forget_user_tel" class="con_forget_user_tel"><form action="" method="post"><ul><li class="item border-t userName"><input type="text" class="the_input topSpecial user_forget_phone" placeholder="请输入手机号" maxlength="11"></li><li class="item checkVerimg" style=""><input type="text" class="the_input ver-img" maxlength="6" placeholder="请输入验证码"><img class="verImg"></li><li class="item border-b Verify"><input type="text" class="the_input verifycode" maxlength="6" placeholder="请输入短信验证码"><a class="send_verify_code" id="send_verify_code_forget" href="javascript:;" rel="nofollow"><em>获取验证码</em></a></li><li class="item border-t pwd" style="margin-top:-1px;"><input type="password" class="the_input password_reg" maxlength="20" placeholder="请输入密码（最少8位，数字+字母）"><em class="password-view"></em></li><li class="send_verify_code_s" id="send_verify_code_forget_s"><em>没有收到验证码？</em><a class="voice_a">发送语音验证码</a></li><li class="show-error"><dd>用户名或密码错误</dd></li><li class="li_btn"><a class="user-forget">修改密码</a></li></ul></form></div><div id="con_forget_user_pw" class="con_forget_user_pw"><form action="" method="post"><ul><li class="item border-t pwd"><input type="password" class="the_input password_reg" maxlength="20" placeholder="请输入密码（最少8位，数字+字母）"><em class="password-view"></em></li><li class="show-error"><dd>用户名或密码错误</dd></li><li class="li_btn"><a class="modify-user-pswd">修改密码</a></li></ul></form></div></div></div><div class="registered"></div></div></div>
-    <div class="mod-search fl" id="search" mod-id="search">
-        <div class="form fl" style="position: relative;">
-            <input type="text" autocomplete="off" id="searchInput" placeholder="输入小区或地铁站开始找房">
-            <button class="btn">
-                <i></i>
-            </button>
-            <div class="sug-search" style="display: none;"></div></div>
-        <div class="aside fl">
-            <ol>
-                <li class="li li-filter" data-type="sellPrice">
-                    <span>售价</span>
-                    <i class="drop-i"></i>
-                    <ol class="drop-list" style="display: none;"><li data-value="" class="item clicked">不限</li><li data-value="min_price=&amp;max_price=100" class="item">100万以下</li><li data-value="min_price=100&amp;max_price=150" class="item">100-150万</li><li data-value="min_price=150&amp;max_price=200" class="item">150-200万</li><li data-value="min_price=200&amp;max_price=250" class="item">200-250万</li><li data-value="min_price=250&amp;max_price=300" class="item">250-300万</li><li data-value="min_price=300&amp;max_price=500" class="item">300-500万</li><li data-value="min_price=500&amp;max_price=1000" class="item">500-1000万</li><li data-value="min_price=1000&amp;max_price=" class="item">1000万以上</li></ol></li>
-                <li class="li li-filter" data-type="roomArea">
-                    <span>面积</span>
-                    <i class="drop-i"></i>
-                    <ol class="drop-list" style="display: none;"><li data-value="" class="item clicked">不限</li><li data-value="min_area=&amp;max_area=50" class="item">50平以下</li><li data-value="min_area=50&amp;max_area=70" class="item">50-70平</li><li data-value="min_area=70&amp;max_area=90" class="item">70-90平</li><li data-value="min_area=90&amp;max_area=110" class="item">90-110平</li><li data-value="min_area=110&amp;max_area=130" class="item">110-130平</li><li data-value="min_area=130&amp;max_area=150" class="item">130-150平</li><li data-value="min_area=150&amp;max_area=200" class="item">150-200平</li><li data-value="min_area=200&amp;max_area=" class="item">200平以上</li></ol></li>
-                <li class="li li-filter" data-type="roomType">
-                    <span>房型</span>
-                    <i class="drop-i"></i>
-                </li>
-                <li class="li-other" data-type="more">
-                    <span>更多</span>
-                    <i class="drop-i"></i>
-                    <ol class="li-mixin"><li class="li li-filter" data-type="direction"><p>朝向</p><span>不限</span><i class="drop-i"></i></li><li class="li li-filter" data-type="roomAge"><p>楼龄</p><span>不限</span><i class="drop-i"></i></li><li class="li li-filter" data-type="roomFloor"><p>楼层</p><span>不限</span><i class="drop-i"></i></li><li class="li li-filter" data-type="roomTag"><p>其他</p><span>不限</span><i class="drop-i"></i></li></ol></li>
-                <li class="li-btn">
-                    <i></i>清除全部条件
-                </li>
-            </ol>
-        </div>
-    </div>
+
+</div>
 
 <div id="allmap"></div>
 

@@ -1,0 +1,7 @@
+.header {
+    padding: 30px;
+    border-bottom: 1px solid #858585;
+    min-width: 980px;
+    position: relative;
+    z-index: 10;
+}
