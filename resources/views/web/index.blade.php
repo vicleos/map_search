@@ -115,12 +115,13 @@
     <title>Map测试</title>
 </head>
 <body>
-<div class="header clear">
+<div id="header" class="header clear">
 
 </div>
 
 <div id="allmap"></div>
 
+<div id="count_hint" class="count_hint"></div>
 </body>
 </html>
 <script type="text/javascript">
@@ -180,8 +181,6 @@
             var dName =  "<p class='dis_name' data-lat='" + districtData[dIndex].lat + "'   data-lng='"+ districtData[dIndex].lng +"'>" + districtData[dIndex].name + "</p>";
             dName += "<p>" + parseInt(districtData[dIndex].count, 10) + "套</p>";
             var newMarker = new ComplexCustomOverlay(newPoint, dName, dName, districtDataConfig, districtData[dIndex].position_border);
-//            var newMarker = new BMap.Marker(newPoint);
-//            console.log(newMarker);
             mgr.addMarker(newMarker, districtDataConfig.minZoom, districtDataConfig.maxZoom)
         }
         mgr.showMarkers();
@@ -282,6 +281,19 @@
     };
     ComplexCustomOverlay.prototype.draw = function(){
         var map = this._map;
+
+        var header = document.getElementById('header');
+        var bs = map.getBounds();   //获取可视区域
+        var bssw = bs.getSouthWest();   //可视区域左下角
+        var bsne = bs.getNorthEast();   //可视区域右上角
+        var msg = "<p>左下角：<b>lng</b> " + bssw.lng + ', <b>lat</b> ' + bssw.lat + '</p>';
+        msg += "<p>右上角：<b>lng</b> " + bsne.lng + ', <b>lat</b> ' + bsne.lat + '</p>';
+        header.innerHTML = msg;
+
+        var countHint = document.getElementById('count_hint');
+
+        countHint.innerHTML = '视野内有2278个房源（共14681个），拖动地图查看更多';
+
         var pixel = map.pointToOverlayPixel(this._point);
         if(this._diyType == 'house'){
             this._div.style.left = (pixel.x - parseInt(this._arrow.style.left)) + "px";

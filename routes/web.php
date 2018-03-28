@@ -10,6 +10,9 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
+Route::pattern('subdomain', '(bj|zz)');
+Route::group(['domain' => '{subdomain}.a.com', 'middleware' => ['web']], function () {
+	Route::get('/', 'Web\Home@index');
+	Route::get('/test', 'Test\Index@index');
+});
 
-Route::get('/', 'Web\Home@index');
-Route::get('/test', 'Test\Index@index');

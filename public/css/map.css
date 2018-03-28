@@ -1,7 +1,28 @@
 .header {
-    padding: 30px;
+    padding: 10px;
     border-bottom: 1px solid #858585;
     min-width: 980px;
     position: relative;
     z-index: 10;
+    font-size: 14px;
+}
+.header p{line-height: 20px; margin: 5px;}
+
+.count_hint {
+    position: absolute;
+    background: rgba(0,0,0,0.6);
+    color: #fff;
+    padding: 0 18px;
+    border-radius: 2px;
+    font-size: 12px;
+    bottom: 20px;
+    left: 50%;
+    height: 26px;
+    padding-bottom: 1px;
+    line-height: 26px;
+    font-weight: bold;
+    transform: translate(-50%, 0);
+    -webkit-transform: translate(-50%, 0);
+    -ms-transform: translate(-50%, 0);
+    -o-transform: translate(-50%, 0);
 }
