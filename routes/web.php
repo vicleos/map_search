@@ -10,10 +10,10 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
-Route::pattern('subdomain', '(bj|zz)');
-Route::group(['domain' => 'a.com', 'prefix' => '/{subdomain}', 'middleware' => ['web']], function () {
+Route::pattern('city_dir', '(bj|zz)');
+Route::group(['domain' => 'a.com', 'prefix' => '/{city_dir}', 'middleware' => ['web']], function () {
 	Route::get('/', 'Web\Home@index');
 	Route::get('/test', 'Test\Index@index');
-	Route::post('/map/search_range', 'Test\Index@searchVisualRange')->name('web.map.search.visual_range');
+	Route::post('/map/search_range', 'Test\Index@searchVisualRange')->name('web.map.search.visual.range');
 });
 

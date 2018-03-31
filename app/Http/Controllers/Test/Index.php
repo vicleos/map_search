@@ -19,6 +19,7 @@ class Index extends WebController
 
 	public function index(Request $request, SpiderHouseRepository $houseRepository, SpiderDistrictRepository $districtRepository, SpiderBizCircleRepository $bizCircleRepository)
 	{
+
 //		$cityDataJson = json_encode($houseRepository->getAll()->toArray(), JSON_UNESCAPED_UNICODE);
 //		$maxLat = '34.91586596173386';
 //		$minLat = '34.88135338391958';

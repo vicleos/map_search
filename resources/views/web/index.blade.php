@@ -138,22 +138,26 @@
     var bssw = bs.getSouthWest();   //可视区域左下角
     var bsne = bs.getNorthEast();   //可视区域右上角
 
-    // 首次加载 ajax 根据初始可视区域，请求对应数据
-    $.ajax({
-        url: '{{route('web.map.search.visual_range')}}',
-        data: {
-            max_lat:bsne.lat,
-            min_lat:bssw.lat,
-            max_lng:bsne.lng,
-            min_lng:bssw.lng,
-            data_type:'district'
-        },
-        dataType:'get',
-        success: function(rst){
-            console.log(rst)
-        }
-    });
-    // 拖动后 ajax 根据初始可视区域，请求对应数据
+    function searchByRange() {
+        {{--{{route('web.map.search.visual.range')}}--}}
+        // 首次加载 ajax 根据初始可视区域，请求对应数据
+        $.ajax({
+            url: '',
+            data: {
+                max_lat:bsne.lat,
+                min_lat:bssw.lat,
+                max_lng:bsne.lng,
+                min_lng:bssw.lng,
+                data_type:'district'
+            },
+            dataType:'post',
+            success: function(rst){
+                console.log(rst)
+            }
+        });
+        // 拖动后 ajax 根据初始可视区域，请求对应数据
+    }
+
 
     // 搜索后的数据结果
     var searchRstData = JSON.parse('{!! $cityDataJson !!}');
