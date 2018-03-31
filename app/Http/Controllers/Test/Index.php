@@ -6,6 +6,7 @@ use App\Http\Controllers\WebController;
 use App\Repository\SpiderDistrictRepository;
 use App\Repository\SpiderBizCircleRepository;
 use App\Repository\SpiderHouseRepository;
+use App\Service\House\DistAreaService;
 use Illuminate\Http\Request;
 
 class Index extends WebController
@@ -67,5 +68,15 @@ class Index extends WebController
 		$bizCircleDataJson = json_encode($bizCircleFormatData, JSON_UNESCAPED_UNICODE);
 		$districtDataJson = json_encode($districtFormatData, JSON_UNESCAPED_UNICODE);
 		return view('web.index', compact('cityDataJson', 'districtDataJson', 'bizCircleDataJson'));
+    }
+
+	public function searchVisualRange(Request $request, DistAreaService $distAreaService)
+	{
+		$input = $request->input();
+		$data = [];
+		if ($input['data_type'] == 'district'){
+			$data = $distAreaService->getDistrictList($input['max_lat'], $input['max_lng'], $input['min_lat'], $input['min_lng']);
+		}
+		return response()->json($data);
     }
 }

@@ -3,6 +3,7 @@
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <meta name="viewport" content="initial-scale=1.0, user-scalable=no" />
+    <meta name="csrf-token" content="{{ csrf_token() }}">
     <link rel="stylesheet" href="{{asset('css/map.css')}}">
     <style type="text/css">
         body, html {width: 100%;height: 100%;margin:0;font-family:"微软雅黑";}
@@ -134,36 +135,11 @@
     map.disableAutoResize();
     map.addControl(new BMap.ScaleControl({anchor: BMAP_ANCHOR_BOTTOM_RIGHT}));
 
-    var bs = map.getBounds();   //获取可视区域
-    var bssw = bs.getSouthWest();   //可视区域左下角
-    var bsne = bs.getNorthEast();   //可视区域右上角
-
-    function searchByRange() {
-        // 首次加载 ajax 根据初始可视区域，请求对应数据
-        $.ajax({
-            url: '{{route('web.map.search.visual.range')}}',
-            data: {
-                max_lat:bsne.lat,
-                min_lat:bssw.lat,
-                max_lng:bsne.lng,
-                min_lng:bssw.lng,
-                data_type:'district'
-            },
-            dataType:'post',
-            success: function(rst){
-                console.log(rst)
-            }
-        });
-        // 拖动后 ajax 根据初始可视区域，请求对应数据
-    }
-
 
     // 搜索后的数据结果
     var searchRstData = JSON.parse('{!! $cityDataJson !!}');
     var dataLength = searchRstData.length;
-    // 行政区域数据
-    var districtData = JSON.parse('{!! $districtDataJson !!}');
-    var disDataLength = districtData.length;
+
     // 商圈区域数据
     var bizCircleData = JSON.parse('{!! $bizCircleDataJson !!}');
     var bizCircleDataLength = bizCircleData.length;
@@ -177,12 +153,58 @@
     var houseMap = new BMapLib.HouseMap(map);
     var bizCircleMap = new BMapLib.BizCircleMap(map);
 
-
-    var districtDataConfig = {minZoom: 8, maxZoom: 13, markerCount:disDataLength, diyType: 'district'};
     var bizCircleDataConfig = {minZoom: 14, maxZoom: 15, markerCount:bizCircleDataLength, diyType: 'bizCircle'};
     var searchDataConfig = {minZoom: 16, maxZoom: 20, markerCount:dataLength, diyType: 'house'};
 
+    function searchByRange() {
+        if(districtData){
+            return true;
+        }
+        var bs = map.getBounds();   //获取可视区域
+        var bssw = bs.getSouthWest();   //可视区域左下角
+        var bsne = bs.getNorthEast();   //可视区域右上角
+        $.ajaxSetup({
+            headers: {
+                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+            }
+        });
+        // 首次加载 ajax 根据初始可视区域，请求对应数据
+        $.ajax({
+            url: '{{route('web.map.search.visual.range')}}',
+            data: {
+                max_lat:bsne.lat,
+                min_lat:bssw.lat,
+                max_lng:bsne.lng,
+                min_lng:bssw.lng,
+                data_type:'district'
+            },
+            type:'post',
+            success: function(rst){
+                districtData = rst.data;
+                console.log(districtData);
+                showDistrict();
+            }
+        });
+        // 拖动后 ajax 根据初始可视区域，请求对应数据
+    }
+    
+    function showDistrict() {
+        // 行政区域数据
+        var disDataLength = districtData.length;
+        var districtDataConfig = {minZoom: 8, maxZoom: 13, markerCount:disDataLength, diyType: 'district'};
+
+        for(var dIndex=0; dIndex < disDataLength; dIndex++){
+            var newPoint = new BMap.Point(districtData[dIndex].lng, districtData[dIndex].lat);
+            var dName =  "<p class='dis_name' data-lat='" + districtData[dIndex].lat + "'   data-lng='"+ districtData[dIndex].lng +"'>" + districtData[dIndex].name + "</p>";
+            dName += "<p>" + parseInt(districtData[dIndex].count, 10) + "套</p>";
+            var newMarker = new ComplexCustomOverlay(newPoint, dName, dName, districtDataConfig, districtData[dIndex].position_border);
+            mgr.addMarker(newMarker, districtDataConfig.minZoom, districtDataConfig.maxZoom)
+        }
+        mgr.showMarkers();
+    }
+
     function init(){
+        searchByRange();
         for(var circleIndex=0; circleIndex < bizCircleDataLength; circleIndex++){
             var newCirclePoint = new BMap.Point(bizCircleData[circleIndex].lng, bizCircleData[circleIndex].lat);
             var circleOverText = "<p class='dis_name'>" + bizCircleData[circleIndex].name + "</p>";
@@ -200,21 +222,6 @@
             houseMap.addMarker(myCompOverlay);
         }
         houseMap.showHouseMarkers();
-
-        for(var dIndex=0; dIndex < disDataLength; dIndex++){
-            var newPoint = new BMap.Point(districtData[dIndex].lng, districtData[dIndex].lat);
-            var dName =  "<p class='dis_name' data-lat='" + districtData[dIndex].lat + "'   data-lng='"+ districtData[dIndex].lng +"'>" + districtData[dIndex].name + "</p>";
-            dName += "<p>" + parseInt(districtData[dIndex].count, 10) + "套</p>";
-            var newMarker = new ComplexCustomOverlay(newPoint, dName, dName, districtDataConfig, districtData[dIndex].position_border);
-            mgr.addMarker(newMarker, districtDataConfig.minZoom, districtDataConfig.maxZoom)
-        }
-        mgr.showMarkers();
-    }
-
-    function log(){
-        var str = "当前zoom"+ map.getZoom() +
-            "<div>地图上marker的数量" + mgr.getMarkerCount(map.getZoom())+ "</div>";
-        document.getElementById("log").innerHTML = "<h3>调试信息显示：</h3>"+ str;
     }
 
     // ------------------- 普通自定义标注遮盖 start ----------------
@@ -318,7 +325,6 @@
         var countHint = document.getElementById('count_hint');
 
         countHint.innerHTML = '视野内有2278个房源（共14681个），拖动地图查看更多';
-
         var pixel = map.pointToOverlayPixel(this._point);
         if(this._diyType == 'house'){
             this._div.style.left = (pixel.x - parseInt(this._arrow.style.left)) + "px";
