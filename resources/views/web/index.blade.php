@@ -139,10 +139,9 @@
     var bsne = bs.getNorthEast();   //可视区域右上角
 
     function searchByRange() {
-        {{--{{route('web.map.search.visual.range')}}--}}
         // 首次加载 ajax 根据初始可视区域，请求对应数据
         $.ajax({
-            url: '',
+            url: '{{route('web.map.search.visual.range')}}',
             data: {
                 max_lat:bsne.lat,
                 min_lat:bssw.lat,
